@@ -12,7 +12,9 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var searchBackground: UIView!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
+    
     var shopList: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         shopTextField.delegate = self
