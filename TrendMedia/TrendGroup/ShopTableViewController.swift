@@ -53,15 +53,20 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
+    // cell의 Height
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     // cell의 갯수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shopList.count
     }
     
-    
+    // cell 스타일
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell", for: indexPath) as? ShopTableViewCell
-        
+        cell?.backgroundColor = UIColor(named: "ShopColor")
         cell?.checkBoxButton.buttonStyle("checkmark.square", "checkmark.square.fill")
         
         cell?.favoriteButton.buttonStyle("star", "star.fill")
@@ -71,14 +76,20 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         return cell ?? tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell")!
     }
 
+    // 편집 활성화
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    // 리스트 삭제
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             shopList.remove(at: indexPath.row)
             tableView.reloadData()
         }
+    }
+    // header의 높이를 주어서 위의 텍스트 필드와의 간격
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 }
