@@ -197,7 +197,6 @@
         <!--Sub Table View Controller-->
         <scene sceneID="FWX-1E-3Ak">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wc8-G3-nxN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Mbv-3R-HNt" customClass="SubTableViewController" customModule="TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dwn-ZO-XlA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -229,6 +228,7 @@
                         <outlet property="tabelLabel" destination="nme-Th-PFH" id="b5l-Ai-O5j"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wc8-G3-nxN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="665" y="133"/>
         </scene>

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63439975288684D90084CD84 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63439974288684D90084CD84 /* Shopping.storyboard */; };
+		634399772886850D0084CD84 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634399762886850D0084CD84 /* ShopTableViewCell.swift */; };
+		634399792886857A0084CD84 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634399782886857A0084CD84 /* ShopTableViewController.swift */; };
+		6343997B28869B270084CD84 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6343997A28869B270084CD84 /* UIButton+Extension.swift */; };
 		63EA306B2884DDD6009F1579 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306A2884DDD6009F1579 /* AppDelegate.swift */; };
 		63EA306D2884DDD6009F1579 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306C2884DDD6009F1579 /* SceneDelegate.swift */; };
 		63EA306F2884DDD6009F1579 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306E2884DDD6009F1579 /* ViewController.swift */; };
@@ -17,9 +21,22 @@
 		63EA30812884FE37009F1579 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA30802884FE37009F1579 /* SettingTableViewController.swift */; };
 		63EA308328850FCE009F1579 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EA308228850FCE009F1579 /* Setting.storyboard */; };
 		63EA308528850FE6009F1579 /* SubTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA308428850FE6009F1579 /* SubTableViewController.swift */; };
+		63FEFDAA2886401600F83F72 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FEFDA92886401600F83F72 /* Search.storyboard */; };
+		63FEFDAC2886403D00F83F72 /* Trend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FEFDAB2886403D00F83F72 /* Trend.storyboard */; };
+		63FEFDAF2886407A00F83F72 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FEFDAE2886407A00F83F72 /* Intro.storyboard */; };
+		63FEFDB12886441600F83F72 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFDB02886441600F83F72 /* TrendViewController.swift */; };
+		63FEFDB32886441F00F83F72 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFDB22886441F00F83F72 /* SearchViewController.swift */; };
+		63FEFDB52886452A00F83F72 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFDB42886452A00F83F72 /* UIViewController+Extension.swift */; };
+		63FEFDB72886478D00F83F72 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFDB62886478D00F83F72 /* UITextField+Extension.swift */; };
+		63FEFDB928864B9200F83F72 /* BucketListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFDB828864B9200F83F72 /* BucketListTableViewController.swift */; };
+		63FEFDBB28864D9700F83F72 /* BuketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFDBA28864D9700F83F72 /* BuketListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63439974288684D90084CD84 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
+		634399762886850D0084CD84 /* ShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewCell.swift; sourceTree = "<group>"; };
+		634399782886857A0084CD84 /* ShopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewController.swift; sourceTree = "<group>"; };
+		6343997A28869B270084CD84 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		63EA30672884DDD6009F1579 /* TrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EA306A2884DDD6009F1579 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63EA306C2884DDD6009F1579 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +49,15 @@
 		63EA30802884FE37009F1579 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		63EA308228850FCE009F1579 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		63EA308428850FE6009F1579 /* SubTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTableViewController.swift; sourceTree = "<group>"; };
+		63FEFDA92886401600F83F72 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		63FEFDAB2886403D00F83F72 /* Trend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trend.storyboard; sourceTree = "<group>"; };
+		63FEFDAE2886407A00F83F72 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		63FEFDB02886441600F83F72 /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
+		63FEFDB22886441F00F83F72 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		63FEFDB42886452A00F83F72 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		63FEFDB62886478D00F83F72 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		63FEFDB828864B9200F83F72 /* BucketListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewController.swift; sourceTree = "<group>"; };
+		63FEFDBA28864D9700F83F72 /* BuketListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuketListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,19 +90,40 @@
 		63EA30692884DDD6009F1579 /* TrendMedia */ = {
 			isa = PBXGroup;
 			children = (
+				63FEFDAD2886404800F83F72 /* TrendGroup */,
 				63EA306A2884DDD6009F1579 /* AppDelegate.swift */,
 				63EA306C2884DDD6009F1579 /* SceneDelegate.swift */,
 				63EA306E2884DDD6009F1579 /* ViewController.swift */,
-				63EA30802884FE37009F1579 /* SettingTableViewController.swift */,
 				63EA30702884DDD6009F1579 /* Main.storyboard */,
-				63EA307E2884F10D009F1579 /* Home.storyboard */,
-				63EA308228850FCE009F1579 /* Setting.storyboard */,
-				63EA308428850FE6009F1579 /* SubTableViewController.swift */,
 				63EA30732884DDD8009F1579 /* Assets.xcassets */,
 				63EA30752884DDD8009F1579 /* LaunchScreen.storyboard */,
 				63EA30782884DDD8009F1579 /* Info.plist */,
 			);
 			path = TrendMedia;
+			sourceTree = "<group>";
+		};
+		63FEFDAD2886404800F83F72 /* TrendGroup */ = {
+			isa = PBXGroup;
+			children = (
+				63EA307E2884F10D009F1579 /* Home.storyboard */,
+				63EA308228850FCE009F1579 /* Setting.storyboard */,
+				63FEFDA92886401600F83F72 /* Search.storyboard */,
+				63FEFDAB2886403D00F83F72 /* Trend.storyboard */,
+				63439974288684D90084CD84 /* Shopping.storyboard */,
+				63FEFDAE2886407A00F83F72 /* Intro.storyboard */,
+				63FEFDBA28864D9700F83F72 /* BuketListTableViewCell.swift */,
+				63FEFDB828864B9200F83F72 /* BucketListTableViewController.swift */,
+				63FEFDB02886441600F83F72 /* TrendViewController.swift */,
+				63FEFDB22886441F00F83F72 /* SearchViewController.swift */,
+				63FEFDB42886452A00F83F72 /* UIViewController+Extension.swift */,
+				63FEFDB62886478D00F83F72 /* UITextField+Extension.swift */,
+				63EA308428850FE6009F1579 /* SubTableViewController.swift */,
+				63EA30802884FE37009F1579 /* SettingTableViewController.swift */,
+				634399762886850D0084CD84 /* ShopTableViewCell.swift */,
+				634399782886857A0084CD84 /* ShopTableViewController.swift */,
+				6343997A28869B270084CD84 /* UIButton+Extension.swift */,
+			);
+			path = TrendGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,10 +184,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63FEFDAC2886403D00F83F72 /* Trend.storyboard in Resources */,
 				63EA30772884DDD8009F1579 /* LaunchScreen.storyboard in Resources */,
 				63EA30742884DDD8009F1579 /* Assets.xcassets in Resources */,
+				63FEFDAF2886407A00F83F72 /* Intro.storyboard in Resources */,
 				63EA308328850FCE009F1579 /* Setting.storyboard in Resources */,
 				63EA30722884DDD6009F1579 /* Main.storyboard in Resources */,
+				63439975288684D90084CD84 /* Shopping.storyboard in Resources */,
+				63FEFDAA2886401600F83F72 /* Search.storyboard in Resources */,
 				63EA307F2884F10D009F1579 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,11 +203,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634399792886857A0084CD84 /* ShopTableViewController.swift in Sources */,
+				63FEFDB72886478D00F83F72 /* UITextField+Extension.swift in Sources */,
+				63FEFDB928864B9200F83F72 /* BucketListTableViewController.swift in Sources */,
+				63FEFDB52886452A00F83F72 /* UIViewController+Extension.swift in Sources */,
+				634399772886850D0084CD84 /* ShopTableViewCell.swift in Sources */,
 				63EA30812884FE37009F1579 /* SettingTableViewController.swift in Sources */,
+				63FEFDB32886441F00F83F72 /* SearchViewController.swift in Sources */,
 				63EA308528850FE6009F1579 /* SubTableViewController.swift in Sources */,
 				63EA306F2884DDD6009F1579 /* ViewController.swift in Sources */,
 				63EA306B2884DDD6009F1579 /* AppDelegate.swift in Sources */,
+				63FEFDB12886441600F83F72 /* TrendViewController.swift in Sources */,
 				63EA306D2884DDD6009F1579 /* SceneDelegate.swift in Sources */,
+				63FEFDBB28864D9700F83F72 /* BuketListTableViewCell.swift in Sources */,
+				6343997B28869B270084CD84 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QV329P6X5G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrendMedia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -330,6 +391,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QV329P6X5G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrendMedia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
