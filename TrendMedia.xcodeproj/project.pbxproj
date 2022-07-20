@@ -21,6 +21,7 @@
 		639FC41628879DE4001CC188 /* RecommandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */; };
 		639FC4192887AE4A001CC188 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 639FC4182887AE4A001CC188 /* Kingfisher */; };
 		639FC41C2887AE63001CC188 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 639FC41B2887AE63001CC188 /* Toast */; };
+		639FC41E2887CBA3001CC188 /* SearchDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC41D2887CBA3001CC188 /* SearchDataInfo.swift */; };
 		63EA306B2884DDD6009F1579 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306A2884DDD6009F1579 /* AppDelegate.swift */; };
 		63EA306D2884DDD6009F1579 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306C2884DDD6009F1579 /* SceneDelegate.swift */; };
 		63EA306F2884DDD6009F1579 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306E2884DDD6009F1579 /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 		639FC411288793CF001CC188 /* MovieInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
 		639FC41328879AA1001CC188 /* RecommandCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandCollectionViewController.swift; sourceTree = "<group>"; };
 		639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandCollectionViewCell.swift; sourceTree = "<group>"; };
+		639FC41D2887CBA3001CC188 /* SearchDataInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataInfo.swift; sourceTree = "<group>"; };
 		63EA30672884DDD6009F1579 /* TrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EA306A2884DDD6009F1579 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63EA306C2884DDD6009F1579 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				63FEFDA92886401600F83F72 /* Search.storyboard */,
 				63FEFDB22886441F00F83F72 /* SearchTableViewController.swift */,
 				634399812886BC4A0084CD84 /* SearchData.swift */,
+				639FC41D2887CBA3001CC188 /* SearchDataInfo.swift */,
 				6343997F2886B8B10084CD84 /* SearchTableViewCell.swift */,
 			);
 			path = Search;
@@ -265,6 +268,7 @@
 			files = (
 				639FC41028878C9E001CC188 /* Movie.swift in Sources */,
 				639FC40E28878767001CC188 /* SearchMovieTableViewCell.swift in Sources */,
+				639FC41E2887CBA3001CC188 /* SearchDataInfo.swift in Sources */,
 				634399792886857A0084CD84 /* ShopTableViewController.swift in Sources */,
 				639FC41628879DE4001CC188 /* RecommandCollectionViewCell.swift in Sources */,
 				63FEFDB72886478D00F83F72 /* UITextField+Extension.swift in Sources */,
