@@ -12,6 +12,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var searchBackground: UIView!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
+
     
     var shopList: [String] = []
     
@@ -32,7 +33,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     func searchBackgroundStyle() {
         searchBackground.backgroundColor = UIColor(named: "ShopColor")
         searchBackground.layer.masksToBounds = true
-        searchBackground.layer.cornerRadius = 20
+        searchBackground.layer.cornerRadius = 10
     }
     
     // 쇼핑 검색 버튼 스타일
@@ -57,7 +58,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     
     // cell의 Height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
     
     // cell의 갯수
@@ -68,7 +69,11 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     // cell 스타일
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell", for: indexPath) as? ShopTableViewCell
-        cell?.backgroundColor = UIColor(named: "ShopColor")
+        
+        cell?.shoplistBackground.backgroundColor = UIColor(named: "ShopColor")
+        cell?.shoplistBackground.layer.masksToBounds = true
+        cell?.shoplistBackground.layer.cornerRadius = 10
+        
         cell?.checkBoxButton.buttonStyle("checkmark.square", "checkmark.square.fill")
         
         cell?.favoriteButton.buttonStyle("star", "star.fill")
@@ -91,7 +96,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     // header의 높이를 주어서 위의 텍스트 필드와의 간격
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
-    }
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 30
+//    }
 }

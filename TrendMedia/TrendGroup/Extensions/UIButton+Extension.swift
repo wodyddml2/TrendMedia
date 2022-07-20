@@ -19,8 +19,10 @@ extension UIButton {
     @objc func buttonClicked() {
         if self.isSelected == true {
             self.isSelected = false
+            
         } else {
             self.isSelected = true
+            
         }
     }
 }
