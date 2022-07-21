@@ -8,6 +8,8 @@
 import UIKit
 
 class BuketListTableViewCell: UITableViewCell {
+    
+    static let identifier = "BuketListTableViewCell"
 
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var buketlistLabel: UILabel!

@@ -11,7 +11,7 @@ import Kingfisher
 //heightForRow > FlowLayout(이유는 가로세로 다 고려해서해서)
 
 class RecommandCollectionViewController: UICollectionViewController {
-    
+    static let recommandIdentifier = "RecommandCollectionViewController"
     var image = URL(string: "https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20171019_71%2F1508372895644TRb8c_JPEG%2Fmovie_image.jpg")
     
     override func viewDidLoad() {
@@ -38,7 +38,9 @@ class RecommandCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommandCollectionViewCell", for: indexPath) as! RecommandCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommandCollectionViewCell", for: indexPath) as? RecommandCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
         cell.posterImageView.backgroundColor = .orange
         cell.posterImageView.kf.setImage(with: image)
@@ -52,7 +54,8 @@ class RecommandCollectionViewController: UICollectionViewController {
 
         // toast with a specific duration and position
         view.makeToast("\(indexPath.item)번째 셀 선택", duration: 3.0, position: .center)
-
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
 

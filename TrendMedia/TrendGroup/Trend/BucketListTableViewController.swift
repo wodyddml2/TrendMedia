@@ -8,24 +8,44 @@
 import UIKit
 
 class BucketListTableViewController: UITableViewController {
-    
+    static let identifier = "BucketListTableViewController"
     var list = ["토르", "헤어질 결심", "탑건"]
     
     @IBOutlet weak var userTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "버킷리스트"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonClicked))
+        
+        
         tableView.rowHeight = 80
         
         list.append("마녀")
         list.append("아이언맨")
    
     }
+    @objc func closeButtonClicked() {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func userTextFieldEnter(_ sender: UITextField) {
-        list.append(sender.text!)
+        if let values = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !values.isEmpty, (2...6).contains(values.count){
+            list.append(values)
+            // 중요! 데이터 업테이트
+            tableView.reloadData()
+        } else {
+            
+        }
         
-        // 중요! 데이터 업테이트
+        guard let guardValue = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !guardValue.isEmpty, (2...6).contains(guardValue.count) else {
+            return
+        }
+        
+        list.append(guardValue)
         tableView.reloadData()
+
         // 개별 갱신
 //        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
 //        tableView.reloadSections(IndexSet(, with: <#T##UITableView.RowAnimation#>)
@@ -36,7 +56,7 @@ class BucketListTableViewController: UITableViewController {
         return list.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BuketListTableViewCell", for: indexPath) as! BuketListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BuketListTableViewCell.identifier, for: indexPath) as! BuketListTableViewCell
         cell.buketlistLabel.text = list[indexPath.row]
         cell.buketlistLabel.font = .boldSystemFont(ofSize: 18)
         

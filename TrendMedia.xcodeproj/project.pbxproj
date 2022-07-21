@@ -22,6 +22,7 @@
 		639FC4192887AE4A001CC188 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 639FC4182887AE4A001CC188 /* Kingfisher */; };
 		639FC41C2887AE63001CC188 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 639FC41B2887AE63001CC188 /* Toast */; };
 		639FC41E2887CBA3001CC188 /* SearchDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC41D2887CBA3001CC188 /* SearchDataInfo.swift */; };
+		63B0712A2888E748001B8FAA /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B071292888E748001B8FAA /* TrendTableViewController.swift */; };
 		63EA306B2884DDD6009F1579 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306A2884DDD6009F1579 /* AppDelegate.swift */; };
 		63EA306D2884DDD6009F1579 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306C2884DDD6009F1579 /* SceneDelegate.swift */; };
 		63EA306F2884DDD6009F1579 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306E2884DDD6009F1579 /* ViewController.swift */; };
@@ -57,6 +58,7 @@
 		639FC41328879AA1001CC188 /* RecommandCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandCollectionViewController.swift; sourceTree = "<group>"; };
 		639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandCollectionViewCell.swift; sourceTree = "<group>"; };
 		639FC41D2887CBA3001CC188 /* SearchDataInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataInfo.swift; sourceTree = "<group>"; };
+		63B071292888E748001B8FAA /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
 		63EA30672884DDD6009F1579 /* TrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EA306A2884DDD6009F1579 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63EA306C2884DDD6009F1579 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,20 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		63B071282888E68E001B8FAA /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				63FEFDAB2886403D00F83F72 /* Trend.storyboard */,
+				63B071292888E748001B8FAA /* TrendTableViewController.swift */,
+				639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */,
+				639FC41328879AA1001CC188 /* RecommandCollectionViewController.swift */,
+				63FEFDBA28864D9700F83F72 /* BuketListTableViewCell.swift */,
+				63FEFDB828864B9200F83F72 /* BucketListTableViewController.swift */,
+				63FEFDB02886441600F83F72 /* TrendViewController.swift */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
 		63EA305E2884DDD6009F1579 = {
 			isa = PBXGroup;
 			children = (
@@ -165,13 +181,8 @@
 				639FC40D28878767001CC188 /* SearchMovieTableViewCell.swift */,
 				639FC40F28878C9E001CC188 /* Movie.swift */,
 				639FC411288793CF001CC188 /* MovieInfo.swift */,
-				63FEFDAB2886403D00F83F72 /* Trend.storyboard */,
-				639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */,
-				639FC41328879AA1001CC188 /* RecommandCollectionViewController.swift */,
+				63B071282888E68E001B8FAA /* Trend */,
 				63FEFDAE2886407A00F83F72 /* Intro.storyboard */,
-				63FEFDBA28864D9700F83F72 /* BuketListTableViewCell.swift */,
-				63FEFDB828864B9200F83F72 /* BucketListTableViewController.swift */,
-				63FEFDB02886441600F83F72 /* TrendViewController.swift */,
 				6343997E2886AF360084CD84 /* Search */,
 				63EA308428850FE6009F1579 /* SubTableViewController.swift */,
 				63EA30802884FE37009F1579 /* SettingTableViewController.swift */,
@@ -271,6 +282,7 @@
 				639FC41E2887CBA3001CC188 /* SearchDataInfo.swift in Sources */,
 				634399792886857A0084CD84 /* ShopTableViewController.swift in Sources */,
 				639FC41628879DE4001CC188 /* RecommandCollectionViewCell.swift in Sources */,
+				63B0712A2888E748001B8FAA /* TrendTableViewController.swift in Sources */,
 				63FEFDB72886478D00F83F72 /* UITextField+Extension.swift in Sources */,
 				63FEFDB928864B9200F83F72 /* BucketListTableViewController.swift in Sources */,
 				63FEFDB52886452A00F83F72 /* UIViewController+Extension.swift in Sources */,
