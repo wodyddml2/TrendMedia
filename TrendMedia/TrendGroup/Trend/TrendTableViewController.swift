@@ -22,6 +22,7 @@ class TrendTableViewController: UITableViewController {
         let sb = UIStoryboard(name: "Trend", bundle: nil)
         // 2.
         let vc = sb.instantiateViewController(withIdentifier: BucketListTableViewController.identifier) as! BucketListTableViewController
+        vc.placeHolder = "검색"
         // 3.
         self.present(vc, animated: true)
     }
@@ -30,6 +31,7 @@ class TrendTableViewController: UITableViewController {
         let sb = UIStoryboard(name: "Trend", bundle: nil)
         // 2.
         let vc = sb.instantiateViewController(withIdentifier: BucketListTableViewController.identifier) as! BucketListTableViewController
+        vc.placeHolder = "검색"
         // 2.5
         vc.modalPresentationStyle = .fullScreen
         // 3.
@@ -39,11 +41,13 @@ class TrendTableViewController: UITableViewController {
         let sb = UIStoryboard(name: "Trend", bundle: nil)
         // 2.
         let vc = sb.instantiateViewController(withIdentifier: BucketListTableViewController.identifier) as! BucketListTableViewController
+        vc.placeHolder = "검색"
         // 2.5
         let nav = UINavigationController(rootViewController: vc)
         
         // 2.5
         nav.modalPresentationStyle = .fullScreen
+        
         // 3.
         self.present(nav, animated: true)
     }

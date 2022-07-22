@@ -13,6 +13,7 @@
 		6343997B28869B270084CD84 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6343997A28869B270084CD84 /* UIButton+Extension.swift */; };
 		634399802886B8B10084CD84 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6343997F2886B8B10084CD84 /* SearchTableViewCell.swift */; };
 		634399822886BC4A0084CD84 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634399812886BC4A0084CD84 /* SearchData.swift */; };
+		6348412A288A3FC80044390B /* SenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63484129288A3FC80044390B /* SenceViewController.swift */; };
 		639FC40C28878700001CC188 /* SearchMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC40B28878700001CC188 /* SearchMovieTableViewController.swift */; };
 		639FC40E28878767001CC188 /* SearchMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC40D28878767001CC188 /* SearchMovieTableViewCell.swift */; };
 		639FC41028878C9E001CC188 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC40F28878C9E001CC188 /* Movie.swift */; };
@@ -51,6 +52,7 @@
 		6343997A28869B270084CD84 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		6343997F2886B8B10084CD84 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		634399812886BC4A0084CD84 /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
+		63484129288A3FC80044390B /* SenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenceViewController.swift; sourceTree = "<group>"; };
 		639FC40B28878700001CC188 /* SearchMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieTableViewController.swift; sourceTree = "<group>"; };
 		639FC40D28878767001CC188 /* SearchMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieTableViewCell.swift; sourceTree = "<group>"; };
 		639FC40F28878C9E001CC188 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				63FEFDAB2886403D00F83F72 /* Trend.storyboard */,
+				63484129288A3FC80044390B /* SenceViewController.swift */,
 				63B071292888E748001B8FAA /* TrendTableViewController.swift */,
 				639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */,
 				639FC41328879AA1001CC188 /* RecommandCollectionViewController.swift */,
@@ -292,6 +295,7 @@
 				63FEFDB32886441F00F83F72 /* SearchTableViewController.swift in Sources */,
 				63EA308528850FE6009F1579 /* SubTableViewController.swift in Sources */,
 				639FC41428879AA1001CC188 /* RecommandCollectionViewController.swift in Sources */,
+				6348412A288A3FC80044390B /* SenceViewController.swift in Sources */,
 				63EA306F2884DDD6009F1579 /* ViewController.swift in Sources */,
 				634399802886B8B10084CD84 /* SearchTableViewCell.swift in Sources */,
 				63EA306B2884DDD6009F1579 /* AppDelegate.swift in Sources */,

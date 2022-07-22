@@ -10,12 +10,22 @@ import Toast
 import Kingfisher
 //heightForRow > FlowLayout(이유는 가로세로 다 고려해서해서)
 
+
 class RecommandCollectionViewController: UICollectionViewController {
     static let recommandIdentifier = "RecommandCollectionViewController"
+    
+    // 1. 값 전달 - 데이터 받을 공간(프로퍼티)생성
+    var movieSearchData: SearchData?
+    // 따로 프로퍼티 생성하지 않고 하나의 구조체 전체를 전달 받는 이유 -
+    // 1. 귀찮아서 2.깔끔해서
+    
     var image = URL(string: "https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20171019_71%2F1508372895644TRb8c_JPEG%2Fmovie_image.jpg")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 3. 값 전달 - 프로퍼티 값을 뷰에 표현
+        title = movieSearchData?.names
+        
 
         // 컬렉션 뷰의 셀 크기, 셀 사이 간격 등 설정
         let layout = UICollectionViewFlowLayout()

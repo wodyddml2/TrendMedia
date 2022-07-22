@@ -42,6 +42,11 @@ class SearchTableViewController: UITableViewController {
         let sb = UIStoryboard(name: "Trend", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: RecommandCollectionViewController.recommandIdentifier) as! RecommandCollectionViewController
         
+        // 2. 값 전달 - vc가 가지고 있는 프로퍼티에 데이터 추가
+        
+        vc.movieSearchData = movieData.movie[indexPath.row]
+       
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
