@@ -15,32 +15,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // 시작화면 조정
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        UserDefaults.standard.set(false, forKey: "First") // True이면 SenceViewController화면, false이면 SearchMovieTableViewController
-        
-        if UserDefaults.standard.bool(forKey: "First") {
-            guard let scene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(windowScene: scene)
-            
-            let sb = UIStoryboard(name: "Trend", bundle: nil)
-            
-            let vc = sb.instantiateViewController(withIdentifier: "SenceViewController") as! SenceViewController
-            
-            window?.rootViewController = vc
-           
-        } else {
-            guard let scene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(windowScene: scene)
-            
-            let sb = UIStoryboard(name: "Setting", bundle: nil)
-            
-            let vc = sb.instantiateViewController(withIdentifier: "SearchMovieTableViewController") as! SearchMovieTableViewController
-            
-            window?.rootViewController = UINavigationController(rootViewController: vc)
-           
-        }
-        
-        // 화면에 띄어주기 위한 메서드
-        window?.makeKeyAndVisible()
+//        UserDefaults.standard.set(false, forKey: "First") // True이면 SenceViewController화면, false이면 SearchMovieTableViewController
+//        
+//        if UserDefaults.standard.bool(forKey: "First") {
+//            guard let scene = (scene as? UIWindowScene) else { return }
+//            window = UIWindow(windowScene: scene)
+//            
+//            let sb = UIStoryboard(name: "Trend", bundle: nil)
+//            
+//            let vc = sb.instantiateViewController(withIdentifier: "SenceViewController") as! SenceViewController
+//            
+//            window?.rootViewController = vc
+//           
+//        } else {
+//            guard let scene = (scene as? UIWindowScene) else { return }
+//            window = UIWindow(windowScene: scene)
+//            
+//            let sb = UIStoryboard(name: "Setting", bundle: nil)
+//            
+//            let vc = sb.instantiateViewController(withIdentifier: "SearchMovieTableViewController") as! SearchMovieTableViewController
+//            
+//            window?.rootViewController = UINavigationController(rootViewController: vc)
+//           
+//        }
+//        
+//        // 화면에 띄어주기 위한 메서드
+//        window?.makeKeyAndVisible()
         
         
     }

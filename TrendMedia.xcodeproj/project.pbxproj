@@ -132,13 +132,13 @@
 		63B071282888E68E001B8FAA /* Trend */ = {
 			isa = PBXGroup;
 			children = (
-				63FEFDAB2886403D00F83F72 /* Trend.storyboard */,
-				63484129288A3FC80044390B /* SenceViewController.swift */,
-				63B071292888E748001B8FAA /* TrendTableViewController.swift */,
+				63FEFDB828864B9200F83F72 /* BucketListTableViewController.swift */,
+				63FEFDBA28864D9700F83F72 /* BuketListTableViewCell.swift */,
 				639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */,
 				639FC41328879AA1001CC188 /* RecommandCollectionViewController.swift */,
-				63FEFDBA28864D9700F83F72 /* BuketListTableViewCell.swift */,
-				63FEFDB828864B9200F83F72 /* BucketListTableViewController.swift */,
+				63484129288A3FC80044390B /* SenceViewController.swift */,
+				63FEFDAB2886403D00F83F72 /* Trend.storyboard */,
+				63B071292888E748001B8FAA /* TrendTableViewController.swift */,
 				63FEFDB02886441600F83F72 /* TrendViewController.swift */,
 			);
 			path = Trend;

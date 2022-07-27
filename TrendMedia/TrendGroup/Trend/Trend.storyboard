@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -81,33 +80,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-Dw-yuu">
-                                            <rect key="frame" x="20" y="18" width="44" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="3be-ar-BkA"/>
-                                                <constraint firstAttribute="width" constant="44" id="rTS-OU-1aH"/>
-                                            </constraints>
+                                            <rect key="frame" x="20" y="24.5" width="41.5" height="31"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button">
-                                                <imageReference key="image" image="square.and.arrow.up.fill" catalog="system" renderingMode="hierarchical-single">
-                                                    <hierarchicalColors>
-                                                        <color systemColor="labelColor"/>
-                                                        <color systemColor="secondaryLabelColor"/>
-                                                        <color systemColor="tertiaryLabelColor"/>
-                                                    </hierarchicalColors>
-                                                </imageReference>
-                                            </buttonConfiguration>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Nlw-ZZ-gBn">
-                                            <rect key="frame" x="80" y="18" width="314" height="44"/>
+                                            <rect key="frame" x="121.5" y="18" width="59" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버킷할일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLQ-L3-pEM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="314" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd9-G5-Y2P">
-                                                    <rect key="frame" x="0.0" y="23" width="314" height="21"/>
+                                                    <rect key="frame" x="0.0" y="23" width="59" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -119,11 +106,12 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Nlw-ZZ-gBn" secondAttribute="trailing" constant="20" id="6IB-sc-lF4"/>
-                                        <constraint firstItem="Nlw-ZZ-gBn" firstAttribute="leading" secondItem="eoV-Dw-yuu" secondAttribute="trailing" constant="16" id="a2I-w2-fF0"/>
+                                        <constraint firstItem="eoV-Dw-yuu" firstAttribute="height" secondItem="xCE-vq-ZEe" secondAttribute="height" multiplier="0.3875" id="Ht8-n2-aSY"/>
+                                        <constraint firstItem="Nlw-ZZ-gBn" firstAttribute="leading" secondItem="eoV-Dw-yuu" secondAttribute="trailing" constant="60" id="SgN-Mc-PqS"/>
                                         <constraint firstItem="Nlw-ZZ-gBn" firstAttribute="centerY" secondItem="xCE-vq-ZEe" secondAttribute="centerY" id="bFs-lU-DAY"/>
                                         <constraint firstItem="eoV-Dw-yuu" firstAttribute="centerY" secondItem="xCE-vq-ZEe" secondAttribute="centerY" id="gVz-Hh-sBd"/>
                                         <constraint firstItem="eoV-Dw-yuu" firstAttribute="leading" secondItem="xCE-vq-ZEe" secondAttribute="leading" constant="20" id="hFf-dM-wSb"/>
+                                        <constraint firstItem="eoV-Dw-yuu" firstAttribute="width" secondItem="xCE-vq-ZEe" secondAttribute="width" multiplier="0.1" id="xFg-Im-rWw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -292,18 +280,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
