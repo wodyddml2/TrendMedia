@@ -14,4 +14,16 @@ class ShopTableViewCell: UITableViewCell {
     @IBOutlet weak var shopListLabel: UILabel!
     @IBOutlet weak var shoplistBackground: UIView!
     
+    func cellStyle() {
+        shoplistBackground.backgroundColor = UIColor(named: "ShopColor")
+        shoplistBackground.layer.masksToBounds = true
+        shoplistBackground.layer.cornerRadius = 10
+        
+        checkBoxButton.setTitle("", for: .normal)
+        checkBoxButton.tintColor = .black
+        
+        favoriteButton.setTitle("", for: .normal)
+        favoriteButton.tintColor = .black
+
+    }
 }
