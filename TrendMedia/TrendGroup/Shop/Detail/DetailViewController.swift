@@ -6,12 +6,17 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var shoppingDetailLabel: UILabel!
     
+    var shoppingInfoHandler: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        
-        
+        if let info = shoppingInfoHandler {
+            info()
+        } else {
+            return
+        }
         
     }
     
@@ -20,6 +25,7 @@ class DetailViewController: UIViewController {
         shoppingDetailLabel.font = .boldSystemFont(ofSize: 24)
         shoppingDetailLabel.textColor = .white
         shoppingDetailLabel.textAlignment = .center
+        shoppingDetailLabel.numberOfLines = 0
     }
 
 }

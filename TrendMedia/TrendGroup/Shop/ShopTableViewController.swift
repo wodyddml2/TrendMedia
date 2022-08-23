@@ -186,6 +186,17 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         taskList = localRealm.objects(UserShopping.self)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+        
+        guard let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
+        vc.shoppingInfoHandler = { 
+            vc.shoppingDetailLabel.text = self.taskList?[indexPath.row].detail
+        }
+        
+        present(vc, animated: true)
+    }
+    
     // 편집 활성화
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
