@@ -172,30 +172,16 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     
     @objc func checkButtonClicked(_ sender: UIButton) {
         let task = taskList?[sender.tag]
-        if task?.check == true {
-            try! localRealm.write {
-                task?.check = false
-                
-            }
-        } else {
-            try! localRealm.write {
-                task?.check = true
-            }
+        try! localRealm.write {
+            task?.check = !task!.check
         }
         taskList = localRealm.objects(UserShopping.self)
     }
     
     @objc func favoriteButtonClicked(_ sender: UIButton) {
         let task = taskList?[sender.tag]
-        if task?.favorite == true {
-            try! localRealm.write {
-                task?.favorite = false
-                
-            }
-        } else {
-            try! localRealm.write {
-                task?.favorite = true
-            }
+        try! localRealm.write {
+            task?.favorite = !task!.favorite
         }
         taskList = localRealm.objects(UserShopping.self)
     }
