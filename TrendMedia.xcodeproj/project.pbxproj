@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6324987628B3573900350B2B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6324987528B3573900350B2B /* Realm */; };
-		6324987828B3573900350B2B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6324987728B3573900350B2B /* RealmSwift */; };
 		6324987A28B3576700350B2B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324987928B3576700350B2B /* RealmModel.swift */; };
 		63439975288684D90084CD84 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63439974288684D90084CD84 /* Shopping.storyboard */; };
 		634399772886850D0084CD84 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634399762886850D0084CD84 /* ShopTableViewCell.swift */; };
@@ -22,10 +20,13 @@
 		639FC412288793CF001CC188 /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC411288793CF001CC188 /* MovieInfo.swift */; };
 		639FC41428879AA1001CC188 /* RecommandCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC41328879AA1001CC188 /* RecommandCollectionViewController.swift */; };
 		639FC41628879DE4001CC188 /* RecommandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */; };
-		639FC4192887AE4A001CC188 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 639FC4182887AE4A001CC188 /* Kingfisher */; };
-		639FC41C2887AE63001CC188 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 639FC41B2887AE63001CC188 /* Toast */; };
 		639FC41E2887CBA3001CC188 /* SearchDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639FC41D2887CBA3001CC188 /* SearchDataInfo.swift */; };
 		63B0712A2888E748001B8FAA /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B071292888E748001B8FAA /* TrendTableViewController.swift */; };
+		63E6030528B4C296001E73F5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 63E6030428B4C296001E73F5 /* Kingfisher */; };
+		63E6030828B4C2A6001E73F5 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 63E6030728B4C2A6001E73F5 /* Toast */; };
+		63E6030B28B4C2C4001E73F5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 63E6030A28B4C2C4001E73F5 /* Realm */; };
+		63E6030D28B4C2C4001E73F5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63E6030C28B4C2C4001E73F5 /* RealmSwift */; };
+		63E6031128B4CF22001E73F5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E6031028B4CF22001E73F5 /* DetailViewController.swift */; };
 		63EA306B2884DDD6009F1579 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306A2884DDD6009F1579 /* AppDelegate.swift */; };
 		63EA306D2884DDD6009F1579 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306C2884DDD6009F1579 /* SceneDelegate.swift */; };
 		63EA306F2884DDD6009F1579 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA306E2884DDD6009F1579 /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		639FC41528879DE4001CC188 /* RecommandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandCollectionViewCell.swift; sourceTree = "<group>"; };
 		639FC41D2887CBA3001CC188 /* SearchDataInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataInfo.swift; sourceTree = "<group>"; };
 		63B071292888E748001B8FAA /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
+		63E6031028B4CF22001E73F5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		63EA30672884DDD6009F1579 /* TrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EA306A2884DDD6009F1579 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63EA306C2884DDD6009F1579 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,10 +93,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6324987828B3573900350B2B /* RealmSwift in Frameworks */,
-				6324987628B3573900350B2B /* Realm in Frameworks */,
-				639FC41C2887AE63001CC188 /* Toast in Frameworks */,
-				639FC4192887AE4A001CC188 /* Kingfisher in Frameworks */,
+				63E6030D28B4C2C4001E73F5 /* RealmSwift in Frameworks */,
+				63E6030B28B4C2C4001E73F5 /* Realm in Frameworks */,
+				63E6030828B4C2A6001E73F5 /* Toast in Frameworks */,
+				63E6030528B4C296001E73F5 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,9 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				63439974288684D90084CD84 /* Shopping.storyboard */,
-				634399762886850D0084CD84 /* ShopTableViewCell.swift */,
 				634399782886857A0084CD84 /* ShopTableViewController.swift */,
-				6324987928B3576700350B2B /* RealmModel.swift */,
+				634399762886850D0084CD84 /* ShopTableViewCell.swift */,
+				63E6030F28B4CF07001E73F5 /* Detail */,
+				63E6030E28B4CEFB001E73F5 /* Realm */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -146,6 +149,22 @@
 				63FEFDB02886441600F83F72 /* TrendViewController.swift */,
 			);
 			path = Trend;
+			sourceTree = "<group>";
+		};
+		63E6030E28B4CEFB001E73F5 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				6324987928B3576700350B2B /* RealmModel.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		63E6030F28B4CF07001E73F5 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				63E6031028B4CF22001E73F5 /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		63EA305E2884DDD6009F1579 = {
@@ -216,10 +235,10 @@
 			);
 			name = TrendMedia;
 			packageProductDependencies = (
-				639FC4182887AE4A001CC188 /* Kingfisher */,
-				639FC41B2887AE63001CC188 /* Toast */,
-				6324987528B3573900350B2B /* Realm */,
-				6324987728B3573900350B2B /* RealmSwift */,
+				63E6030428B4C296001E73F5 /* Kingfisher */,
+				63E6030728B4C2A6001E73F5 /* Toast */,
+				63E6030A28B4C2C4001E73F5 /* Realm */,
+				63E6030C28B4C2C4001E73F5 /* RealmSwift */,
 			);
 			productName = TrendMedia;
 			productReference = 63EA30672884DDD6009F1579 /* TrendMedia.app */;
@@ -250,9 +269,9 @@
 			);
 			mainGroup = 63EA305E2884DDD6009F1579;
 			packageReferences = (
-				639FC4172887AE4A001CC188 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				639FC41A2887AE63001CC188 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
-				6324987428B3573900350B2B /* XCRemoteSwiftPackageReference "realm-swift" */,
+				63E6030328B4C296001E73F5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				63E6030628B4C2A6001E73F5 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				63E6030928B4C2C4001E73F5 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 63EA30682884DDD6009F1579 /* Products */;
 			projectDirPath = "";
@@ -300,6 +319,7 @@
 				634399772886850D0084CD84 /* ShopTableViewCell.swift in Sources */,
 				6324987A28B3576700350B2B /* RealmModel.swift in Sources */,
 				63EA30812884FE37009F1579 /* SettingTableViewController.swift in Sources */,
+				63E6031128B4CF22001E73F5 /* DetailViewController.swift in Sources */,
 				63FEFDB32886441F00F83F72 /* SearchTableViewController.swift in Sources */,
 				63EA308528850FE6009F1579 /* SubTableViewController.swift in Sources */,
 				639FC41428879AA1001CC188 /* RecommandCollectionViewController.swift in Sources */,
@@ -466,6 +486,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -494,6 +515,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,15 +553,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6324987428B3573900350B2B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
-		639FC4172887AE4A001CC188 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		63E6030328B4C296001E73F5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -547,7 +561,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		639FC41A2887AE63001CC188 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+		63E6030628B4C2A6001E73F5 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
 			requirement = {
@@ -555,28 +569,36 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		63E6030928B4C2C4001E73F5 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6324987528B3573900350B2B /* Realm */ = {
+		63E6030428B4C296001E73F5 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6324987428B3573900350B2B /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		6324987728B3573900350B2B /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6324987428B3573900350B2B /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		639FC4182887AE4A001CC188 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 639FC4172887AE4A001CC188 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 63E6030328B4C296001E73F5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		639FC41B2887AE63001CC188 /* Toast */ = {
+		63E6030728B4C2A6001E73F5 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 639FC41A2887AE63001CC188 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			package = 63E6030628B4C2A6001E73F5 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		63E6030A28B4C2C4001E73F5 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63E6030928B4C2C4001E73F5 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		63E6030C28B4C2C4001E73F5 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63E6030928B4C2C4001E73F5 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

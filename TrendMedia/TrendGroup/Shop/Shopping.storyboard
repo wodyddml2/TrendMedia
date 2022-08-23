@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="paD-Ru-iaJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D2S-c7-dcl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,8 +74,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbO-0z-WkR">
-                                            <rect key="frame" x="340" y="25.5" width="46" height="28"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbO-0z-WkR">
+                                            <rect key="frame" x="332" y="25.5" width="54" height="28"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                         </button>
@@ -110,6 +111,7 @@
                             <outlet property="delegate" destination="paD-Ru-iaJ" id="Z63-P7-8Fl"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="T3h-OD-oPg"/>
                     <connections>
                         <outlet property="searchBackground" destination="uNr-Ct-6AQ" id="zhR-lC-unI"/>
                         <outlet property="searchButton" destination="UWs-8X-Z7S" id="vre-zu-b6D"/>
@@ -118,7 +120,57 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BeY-Ge-HXH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="886.95652173913049" y="25.446428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4ga-uF-8p7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D2S-c7-dcl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kWY-wZ-L6P">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="paD-Ru-iaJ" kind="relationship" relationship="rootViewController" id="UUo-rz-vNa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdQ-uc-JFk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="25.446428571428569"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="MP1-6n-YFm">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="uRi-g2-tjQ" customClass="DetailViewController" customModule="TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1o6-OJ-efs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eN3-hh-pfk">
+                                <rect key="frame" x="186.5" y="438" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Y5M-FY-dSG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eN3-hh-pfk" firstAttribute="centerY" secondItem="1o6-OJ-efs" secondAttribute="centerY" id="F9b-Uz-zMn"/>
+                            <constraint firstItem="eN3-hh-pfk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y5M-FY-dSG" secondAttribute="leading" constant="8" id="LEK-0O-Jk5"/>
+                            <constraint firstItem="eN3-hh-pfk" firstAttribute="centerX" secondItem="1o6-OJ-efs" secondAttribute="centerX" id="fmE-JT-g2p"/>
+                            <constraint firstItem="Y5M-FY-dSG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eN3-hh-pfk" secondAttribute="trailing" constant="8" id="vmm-Ch-q2d"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="shoppingDetailLabel" destination="eN3-hh-pfk" id="YoX-eD-5aW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3d-IS-i1O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1889.8550724637682" y="24.776785714285712"/>
         </scene>
     </scenes>
     <resources>

@@ -16,13 +16,28 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var searchButton: UIButton!
     
 
-    let localRealm = try! Realm()
+    private let localRealm = try! Realm()
 
-    var taskList: Results<UserShopping>?
-    var task: UserShopping?
+    private var taskList: Results<UserShopping>? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    private var task: UserShopping?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.title = "ShoppingList"
+        if #available(iOS 14.0, *) {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "정렬", primaryAction: nil, menu: sortedMenuAction())
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "정렬", style: .plain, target: self, action: #selector(sortedAlertAction))
+        }
+        
+
         shopTextField.delegate = self
         
         //UITextField+Extension
@@ -38,13 +53,47 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    private func sortedMenuAction() -> UIMenu {
+        let favorite = UIAction(title: "즐겨찾기순", image: UIImage(systemName: "star")) { _ in
+            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "favorite", ascending: false)
+        }
+        let check = UIAction(title: "미체크순", image: UIImage(systemName: "checkmark.square")) { _ in
+            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "check", ascending: true)
+        }
+        
+        let title = UIAction(title: "제목순", image: UIImage(systemName: "character")) { _ in
+            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "detail", ascending: true)
+        }
+        
+        let menu = UIMenu(title: "리스트 정렬", identifier: nil, options: .displayInline, children: [title, favorite, check])
+        
+        return menu
+    }
+    
+    @objc private func sortedAlertAction() -> UIAlertController {
+        let alert = UIAlertController(title: "리스트 정렬", message: nil, preferredStyle: .actionSheet)
+        
+        let favorite = UIAlertAction(title: "즐겨찾기순", style: .default) { _ in
+            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "favorite", ascending: false)
+        }
+        let check = UIAlertAction(title: "미체크순", style: .default) { _ in
+            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "check", ascending: true)
+        }
+        let title = UIAlertAction(title: "제목순", style: .default) { _ in
+            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "detail", ascending: true)
+        }
+        [favorite, check, title].forEach {
+            alert.addAction($0)
+        }
+        return alert
+    }
+
     @objc func searchButtonClicked() {
         task = UserShopping(detail: shopTextField.text ?? "")
         try! localRealm.write{
             
             localRealm.add(task!)
             taskList = localRealm.objects(UserShopping.self)
-            tableView.reloadData()
         }
         shopTextField.text = ""
     }
@@ -74,7 +123,6 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         try! localRealm.write{
             localRealm.add(task!)
             taskList = localRealm.objects(UserShopping.self)
-            tableView.reloadData()
         }
 
         shopTextField.text = ""
@@ -134,7 +182,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
                 task?.check = true
             }
         }
-        tableView.reloadData()
+        taskList = localRealm.objects(UserShopping.self)
     }
     
     @objc func favoriteButtonClicked(_ sender: UIButton) {
@@ -149,7 +197,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
                 task?.favorite = true
             }
         }
-        tableView.reloadData()
+        taskList = localRealm.objects(UserShopping.self)
     }
     
     // 편집 활성화
@@ -164,7 +212,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
             try! localRealm.write {
 //                localRealm.deleteAll()
                 localRealm.delete((taskList?[indexPath.row])!)
-                tableView.reloadData()
+                taskList = localRealm.objects(UserShopping.self)
             }
             
         }
