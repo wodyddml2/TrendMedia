@@ -14,6 +14,8 @@ class ShopTableViewCell: UITableViewCell {
     @IBOutlet weak var shopListLabel: UILabel!
     @IBOutlet weak var shoplistBackground: UIView!
     
+    @IBOutlet weak var shoplistImageView: UIImageView!
+    
     func cellStyle() {
         shoplistBackground.backgroundColor = UIColor(named: "ShopColor")
         shoplistBackground.layer.masksToBounds = true
@@ -24,6 +26,7 @@ class ShopTableViewCell: UITableViewCell {
         
         favoriteButton.setTitle("", for: .normal)
         favoriteButton.tintColor = .black
-
+        
+        shoplistImageView.backgroundColor = .white
     }
 }

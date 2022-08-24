@@ -5,8 +5,10 @@ import RealmSwift
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var shoppingDetailLabel: UILabel!
+    @IBOutlet weak var shoppingDetailImageView: UIImageView!
     
     var shoppingInfoHandler: (() -> ())?
+    var objectId: ObjectId?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +19,11 @@ class DetailViewController: UIViewController {
         } else {
             return
         }
+        guard let objectId = objectId else {
+            return
+        }
+        
+        shoppingDetailImageView.image = loadImageFromDocument(fileName: "\(objectId).jpg")
         
     }
     

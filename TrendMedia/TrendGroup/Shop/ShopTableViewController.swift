@@ -131,7 +131,8 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     
     // cell의 Height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 100
+        
     }
     
     // cell의 갯수
@@ -162,7 +163,8 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         
         cell?.shopListLabel.text = taskList?[indexPath.row].detail
         
-       
+        cell?.shoplistImageView.image = UIImage(systemName: "star")
+        
         cell?.checkBoxButton.tag = indexPath.row
         cell?.favoriteButton.tag = indexPath.row
         
@@ -188,10 +190,13 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+        guard let cell = tableView.cellForRow(at: indexPath) as? ShopTableViewCell else {return}
+        saveImageToDocument(fileName: "\(taskList![indexPath.item].objectID).jpg", image: cell.shoplistImageView.image!)
         
         guard let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
         vc.shoppingInfoHandler = { 
             vc.shoppingDetailLabel.text = self.taskList?[indexPath.row].detail
+            vc.objectId = self.taskList?[indexPath.row].objectID
         }
         
         present(vc, animated: true)
@@ -205,13 +210,16 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     // 리스트 삭제
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-           
+            guard let tasks = taskList else {
+                return
+            }
+            removeImageFromDocument(fileName: "\(tasks[indexPath.row].objectID).jpg")
             try! localRealm.write {
 //                localRealm.deleteAll()
-                localRealm.delete((taskList?[indexPath.row])!)
+                localRealm.delete((tasks[indexPath.row]))
                 taskList = localRealm.objects(UserShopping.self)
             }
-            
+           
         }
     }
     // header의 높이를 주어서 위의 텍스트 필드와의 간격

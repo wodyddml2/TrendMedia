@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630C4AB228B61A820002E88F /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C4AB128B61A820002E88F /* FileManager+Extension.swift */; };
 		6324987A28B3576700350B2B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324987928B3576700350B2B /* RealmModel.swift */; };
 		63439975288684D90084CD84 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63439974288684D90084CD84 /* Shopping.storyboard */; };
 		634399772886850D0084CD84 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634399762886850D0084CD84 /* ShopTableViewCell.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		630C4AB128B61A820002E88F /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		6324987928B3576700350B2B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		63439974288684D90084CD84 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
 		634399762886850D0084CD84 /* ShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewCell.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				63FEFDB42886452A00F83F72 /* UIViewController+Extension.swift */,
+				630C4AB128B61A820002E88F /* FileManager+Extension.swift */,
 				63FEFDB62886478D00F83F72 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
@@ -308,6 +311,7 @@
 			files = (
 				639FC41028878C9E001CC188 /* Movie.swift in Sources */,
 				639FC40E28878767001CC188 /* SearchMovieTableViewCell.swift in Sources */,
+				630C4AB228B61A820002E88F /* FileManager+Extension.swift in Sources */,
 				639FC41E2887CBA3001CC188 /* SearchDataInfo.swift in Sources */,
 				634399792886857A0084CD84 /* ShopTableViewController.swift in Sources */,
 				639FC41628879DE4001CC188 /* RecommandCollectionViewCell.swift in Sources */,
