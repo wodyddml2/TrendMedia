@@ -18,4 +18,10 @@ extension UIViewController {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
+    func showRestoreAlert(alertTitle: String, handler: @escaping (UIAlertAction) -> ()) {
+        let alert = UIAlertController(title: alertTitle,message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ok", style: .default, handler: handler)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
 }

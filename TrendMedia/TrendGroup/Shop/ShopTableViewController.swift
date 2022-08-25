@@ -55,6 +55,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     
     @objc func backupButtonClicked() {
         guard let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "BackupViewController") as? BackupViewController else {return}
+     
         navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -1,5 +1,6 @@
 import UIKit
 
+import RealmSwift
 import Zip
 
 class BackupViewController: UIViewController {
@@ -8,6 +9,8 @@ class BackupViewController: UIViewController {
     
     var backupFileList: [String]?
     var backupFileSize: [String]?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,8 @@ class BackupViewController: UIViewController {
         let restoreButton = UIBarButtonItem(title: "복구", style: .plain, target: self, action: #selector(restoreButtonClicked))
        
         navigationItem.rightBarButtonItems = [backupButton, restoreButton]
-        
+  
+
         fetchDocumentZipFile { file, size in
             self.backupFileList = file
        
@@ -30,7 +34,8 @@ class BackupViewController: UIViewController {
         }
         print(backupFileList!)
     }
-    
+  
+
     @objc func backupButtonClicked() {
         var urlPaths = [URL]()
         
@@ -53,11 +58,19 @@ class BackupViewController: UIViewController {
         do {
             try Zip.quickZipFiles(urlPaths, fileName: "ShoppingList_\(Date())")
             showActivityViewController()
-            
+            fetchDocumentZipFile { file, size in
+                self.backupFileList = file
+           
+                self.backupFileSize = size.map { fileSize in
+                    
+                    String(format: "%.1f", ((fileSize! as? Double)! / 1000))
+                }
+            }
+            backupTableView.reloadData()
         } catch {
             showAlert(alertTitle: "압축을 실패했습니다.", alertMessage: nil)
         }
-        backupTableView.reloadData()
+       
     }
     
     func showActivityViewController() {
@@ -66,9 +79,10 @@ class BackupViewController: UIViewController {
             return
         }
         let backupFileURL = path.appendingPathComponent("ShoppingList_\(Date()).zip")
-        
+
         let vc = UIActivityViewController(activityItems: [backupFileURL], applicationActivities: [])
         self.present(vc, animated: true)
+        
     }
     
     @objc func restoreButtonClicked() {
@@ -86,6 +100,10 @@ extension BackupViewController: UIDocumentPickerDelegate {
         print(#function)
     }
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
+       
+        
+        
         guard let path = documentDirectoryPath() else {
             showAlert(alertTitle: "Document의 경로가 잘못되었습니다.", alertMessage: nil)
             return
@@ -96,12 +114,9 @@ extension BackupViewController: UIDocumentPickerDelegate {
         }
         let sandBoxFileURL = path.appendingPathComponent(selectedFileURL.lastPathComponent)
         
-//        if ((backupFileList?.contains(sandBoxFileURL.lastPathComponent)) != nil) {
-//            print("아아아아앙", sandBoxFileURL.lastPathComponent)
-//        }
         if (backupFileList?.contains(sandBoxFileURL.lastPathComponent)) == true {
             if FileManager.default.fileExists(atPath: sandBoxFileURL.path) {
-                let fileURL = path.appendingPathComponent(sandBoxFileURL.lastPathComponent) //
+                let fileURL = path.appendingPathComponent(sandBoxFileURL.lastPathComponent)
                 
                 do {
                     try Zip.unzipFile(fileURL, destination: path, overwrite: true, password: nil, progress: { progress in
@@ -109,22 +124,28 @@ extension BackupViewController: UIDocumentPickerDelegate {
                         self.backupProgressView.setProgress(Float(progress), animated: true)
                         
                     }, fileOutputHandler: { unzippedFile in
-                        self.showAlert(alertTitle: "복구가 완료되었습니다.", alertMessage: nil)
-                        
+                       
+                        self.showRestoreAlert(alertTitle: "복구가 완료되었습니다.") { _ in
+//                            sceneDelegate?.window?.rootViewController = nav
+//                            sceneDelegate?.window?.makeKeyAndVisible()
+                        }
                     })
                 } catch {
                     showAlert(alertTitle: "압축 해제에 실패했습니다.", alertMessage: nil)
                 }
+                
             } else {
                 do {
                     try FileManager.default.copyItem(at: selectedFileURL, to: sandBoxFileURL)
                     
-                    let fileURL = path.appendingPathComponent("ShoppingList_1.zip") //
+                    let fileURL = path.appendingPathComponent(sandBoxFileURL.lastPathComponent)
                     
                     try Zip.unzipFile(fileURL, destination: path, overwrite: true, password: nil, progress: { progress in
                         print(progress)
                     }, fileOutputHandler: { unzippedFile in
-                        self.showAlert(alertTitle: "복구가 완료되었습니다.", alertMessage: nil)
+                        self.showRestoreAlert(alertTitle: "복구가 완료되었습니다.") { _ in
+                            
+                        }
                     })
                 } catch {
                     showAlert(alertTitle: "압축 해제에 실패했습니다.", alertMessage: nil)
