@@ -6,7 +6,9 @@ class BackupViewController: UIViewController {
     @IBOutlet weak var backupTableView: UITableView!
     @IBOutlet weak var backupProgressView: UIProgressView!
     
-
+    var backupFileList: [String]?
+    var backupFileSize: [String]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +19,15 @@ class BackupViewController: UIViewController {
         let restoreButton = UIBarButtonItem(title: "복구", style: .plain, target: self, action: #selector(restoreButtonClicked))
        
         navigationItem.rightBarButtonItems = [backupButton, restoreButton]
+        
+        fetchDocumentZipFile { file, size in
+            self.backupFileList = file
+       
+            self.backupFileSize = size.map { fileSize in
+                
+                String(format: "%.1f", ((fileSize! as? Double)! / 1000))
+            }
+        }
     }
     
     @objc func backupButtonClicked() {
@@ -36,7 +47,7 @@ class BackupViewController: UIViewController {
         urlPaths.append(realmFile)
         
         do {
-            try Zip.quickZipFiles(urlPaths, fileName: "ShoppingList_1")
+            try Zip.quickZipFiles(urlPaths, fileName: "ShoppingList_\(Date())")
             showActivityViewController()
         } catch {
             showAlert(alertTitle: "압축을 실패했습니다.", alertMessage: nil)
@@ -48,7 +59,7 @@ class BackupViewController: UIViewController {
             showAlert(alertTitle: "Document의 경로가 잘못되었습니다.", alertMessage: nil)
             return
         }
-        let backupFileURL = path.appendingPathComponent("ShoppingList_1.zip")
+        let backupFileURL = path.appendingPathComponent("ShoppingList_\(Date()).zip")
         
         let vc = UIActivityViewController(activityItems: [backupFileURL], applicationActivities: [])
         self.present(vc, animated: true)
@@ -79,7 +90,7 @@ extension BackupViewController: UIDocumentPickerDelegate {
         }
         let sandBoxFileURL = path.appendingPathComponent(selectedFileURL.lastPathComponent)
         if FileManager.default.fileExists(atPath: sandBoxFileURL.path) {
-            let fileURL = path.appendingPathComponent("ShoppingList_1.zip")
+            let fileURL = path.appendingPathComponent("ShoppingList_\(Date()).zip") //
             
             do {
                 try Zip.unzipFile(fileURL, destination: path, overwrite: true, password: nil, progress: { progress in
@@ -97,7 +108,7 @@ extension BackupViewController: UIDocumentPickerDelegate {
             do {
                 try FileManager.default.copyItem(at: selectedFileURL, to: sandBoxFileURL)
                 
-                let fileURL = path.appendingPathComponent("ShoppingList_1.zip")
+                let fileURL = path.appendingPathComponent("ShoppingList_\(Date()).zip") //
                 
                 try Zip.unzipFile(fileURL, destination: path, overwrite: true, password: nil, progress: { progress in
                     print(progress)
@@ -115,12 +126,14 @@ extension BackupViewController: UIDocumentPickerDelegate {
 
 extension BackupViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return backupFileList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BackupTableViewCell", for: indexPath) as? BackupTableViewCell else {return UITableViewCell()}
         
+        cell.fileNameLabel.text = backupFileList?[indexPath.row]
+        cell.fileSizeLabel.text = "\(backupFileSize?[indexPath.row] ?? "")KB"
         return cell
     }
 }

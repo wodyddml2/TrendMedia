@@ -212,7 +212,32 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fGC-Qu-5ub" id="nde-ng-bL0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPD-id-q7G">
+                                                    <rect key="frame" x="20" y="17" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7if-hD-uaD">
+                                                    <rect key="frame" x="352" y="17" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7if-hD-uaD" firstAttribute="trailing" secondItem="nde-ng-bL0" secondAttribute="trailingMargin" id="1V2-jo-dTZ"/>
+                                                <constraint firstItem="7if-hD-uaD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VPD-id-q7G" secondAttribute="trailing" constant="8" id="38C-cu-HXJ"/>
+                                                <constraint firstItem="VPD-id-q7G" firstAttribute="centerY" secondItem="nde-ng-bL0" secondAttribute="centerY" id="Hyd-CC-iT1"/>
+                                                <constraint firstItem="7if-hD-uaD" firstAttribute="centerY" secondItem="nde-ng-bL0" secondAttribute="centerY" id="Ygg-W4-Nmm"/>
+                                                <constraint firstItem="VPD-id-q7G" firstAttribute="leading" secondItem="nde-ng-bL0" secondAttribute="leadingMargin" id="qjB-PQ-pRB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fileNameLabel" destination="VPD-id-q7G" id="sGr-f8-QLt"/>
+                                            <outlet property="fileSizeLabel" destination="7if-hD-uaD" id="lH2-VP-pRG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

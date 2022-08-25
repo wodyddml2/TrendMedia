@@ -51,7 +51,6 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         taskList = localRealm.objects(UserShopping.self)
         
         searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
-        
     }
     
     @objc func backupButtonClicked() {

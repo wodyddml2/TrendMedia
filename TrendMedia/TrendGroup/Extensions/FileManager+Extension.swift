@@ -44,4 +44,28 @@ extension UIViewController {
             print(error)
         }
     }
+    
+    func fetchDocumentZipFile(completionHandler: @escaping ([String],[Any?]) -> ()) {
+        do {
+            guard let path = documentDirectoryPath() else {return}
+            
+            let docs = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
+            
+            let zip = docs.filter {
+                $0.pathExtension == "zip"
+            }
+            
+            let result = zip.map {
+                $0.lastPathComponent
+                
+            }
+            let fileSize = zip.map {
+                try? FileManager.default.attributesOfItem(atPath: $0.path)[.size]
+            }
+
+            completionHandler(result,fileSize)
+        } catch {
+            print("error")
+        }
+    }
 }
