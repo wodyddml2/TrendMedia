@@ -8,26 +8,44 @@ extension UIViewController {
         return documentDirectory
     }
     
-    func saveImageToDocument(fileName: String, image: UIImage) {
+    func imageDirectoryPath() -> URL? {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return
+            return nil
         }
-        let fileURL = documentDirectory.appendingPathComponent(fileName)
-        print(fileURL)
-        guard let data = image.jpegData(compressionQuality: 0.5) else {
-            return
+        let imageDirectoryURL = documentDirectory.appendingPathComponent("Image")
+        
+        return imageDirectoryURL
+    }
+    
+    func saveImageToDocument(fileName: String, image: UIImage) {
+        guard let path = imageDirectoryPath() else {return}
+        
+        if !FileManager.default.fileExists(atPath: path.path) {
+            do {
+                try FileManager.default.createDirectory(at: path, withIntermediateDirectories: true)
+            } catch {
+                print("errrrr")
+            }
+        } else {
+            let fileURL = path.appendingPathComponent(fileName)
+            print(fileURL)
+            guard let data = image.jpegData(compressionQuality: 0.5) else {
+                return
+            }
+            
+            do {
+                try data.write(to: fileURL)
+            } catch let error {
+                print(error)
+            }
         }
         
-        do {
-            try data.write(to: fileURL)
-        } catch let error {
-            print(error)
-        }
+        
     }
     
     func loadImageFromDocument(fileName: String) -> UIImage? {
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
-        let fileURL = documentDirectory.appendingPathComponent(fileName)
+        guard let path = imageDirectoryPath() else {return nil}
+        let fileURL = path.appendingPathComponent(fileName)
         
         let image = UIImage(contentsOfFile: fileURL.path)
         
@@ -35,8 +53,8 @@ extension UIViewController {
     }
     
     func removeImageFromDocument(fileName: String) {
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
-        let fileURL = documentDirectory.appendingPathComponent(fileName)
+        guard let path = imageDirectoryPath() else {return}
+        let fileURL = path.appendingPathComponent(fileName)
         
         do {
             try FileManager.default.removeItem(at: fileURL)

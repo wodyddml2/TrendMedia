@@ -28,30 +28,36 @@ class BackupViewController: UIViewController {
                 String(format: "%.1f", ((fileSize! as? Double)! / 1000))
             }
         }
+        print(backupFileList!)
     }
     
     @objc func backupButtonClicked() {
         var urlPaths = [URL]()
         
-        guard let path = documentDirectoryPath() else {
+        guard let path = documentDirectoryPath(), let imageFile = imageDirectoryPath() else {
             showAlert(alertTitle: "Document 경로가 잘못되었습니다.", alertMessage: nil)
             return
         }
-        let realmFile = path.appendingPathComponent("default.realm")
+
         
-        guard FileManager.default.fileExists(atPath: realmFile.path) else {
+        let realmFile = path.appendingPathComponent("default.realm")
+       
+        
+        guard FileManager.default.fileExists(atPath: realmFile.path), FileManager.default.fileExists(atPath: imageFile.path) else {
             showAlert(alertTitle: "백업할 파일이 존재하지 않습니다.", alertMessage: nil)
             return
         }
         
-        urlPaths.append(realmFile)
+        urlPaths.append(contentsOf: [realmFile, imageFile])
         
         do {
             try Zip.quickZipFiles(urlPaths, fileName: "ShoppingList_\(Date())")
             showActivityViewController()
+            
         } catch {
             showAlert(alertTitle: "압축을 실패했습니다.", alertMessage: nil)
         }
+        backupTableView.reloadData()
     }
     
     func showActivityViewController() {
@@ -89,36 +95,45 @@ extension BackupViewController: UIDocumentPickerDelegate {
             return
         }
         let sandBoxFileURL = path.appendingPathComponent(selectedFileURL.lastPathComponent)
-        if FileManager.default.fileExists(atPath: sandBoxFileURL.path) {
-            let fileURL = path.appendingPathComponent("ShoppingList_\(Date()).zip") //
-            
-            do {
-                try Zip.unzipFile(fileURL, destination: path, overwrite: true, password: nil, progress: { progress in
-                    print(progress)
-                    self.backupProgressView.setProgress(Float(progress), animated: true)
+        
+//        if ((backupFileList?.contains(sandBoxFileURL.lastPathComponent)) != nil) {
+//            print("아아아아앙", sandBoxFileURL.lastPathComponent)
+//        }
+        if (backupFileList?.contains(sandBoxFileURL.lastPathComponent)) == true {
+            if FileManager.default.fileExists(atPath: sandBoxFileURL.path) {
+                let fileURL = path.appendingPathComponent(sandBoxFileURL.lastPathComponent) //
+                
+                do {
+                    try Zip.unzipFile(fileURL, destination: path, overwrite: true, password: nil, progress: { progress in
+                        print(progress)
+                        self.backupProgressView.setProgress(Float(progress), animated: true)
+                        
+                    }, fileOutputHandler: { unzippedFile in
+                        self.showAlert(alertTitle: "복구가 완료되었습니다.", alertMessage: nil)
+                        
+                    })
+                } catch {
+                    showAlert(alertTitle: "압축 해제에 실패했습니다.", alertMessage: nil)
+                }
+            } else {
+                do {
+                    try FileManager.default.copyItem(at: selectedFileURL, to: sandBoxFileURL)
                     
-                }, fileOutputHandler: { unzippedFile in
-                    self.showAlert(alertTitle: "복구가 완료되었습니다.", alertMessage: nil)
+                    let fileURL = path.appendingPathComponent("ShoppingList_1.zip") //
                     
-                })
-            } catch {
-                showAlert(alertTitle: "압축 해제에 실패했습니다.", alertMessage: nil)
+                    try Zip.unzipFile(fileURL, destination: path, overwrite: true, password: nil, progress: { progress in
+                        print(progress)
+                    }, fileOutputHandler: { unzippedFile in
+                        self.showAlert(alertTitle: "복구가 완료되었습니다.", alertMessage: nil)
+                    })
+                } catch {
+                    showAlert(alertTitle: "압축 해제에 실패했습니다.", alertMessage: nil)
+                }
             }
         } else {
-            do {
-                try FileManager.default.copyItem(at: selectedFileURL, to: sandBoxFileURL)
-                
-                let fileURL = path.appendingPathComponent("ShoppingList_\(Date()).zip") //
-                
-                try Zip.unzipFile(fileURL, destination: path, overwrite: true, password: nil, progress: { progress in
-                    print(progress)
-                }, fileOutputHandler: { unzippedFile in
-                    self.showAlert(alertTitle: "복구가 완료되었습니다.", alertMessage: nil)
-                })
-            } catch {
-                showAlert(alertTitle: "압축 해제에 실패했습니다.", alertMessage: nil)
-            }
+            showAlert(alertTitle: "선택하신 파일은 사용할 수 없습니다.", alertMessage: nil)
         }
+        
         
         
     }
