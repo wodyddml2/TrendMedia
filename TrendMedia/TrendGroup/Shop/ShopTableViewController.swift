@@ -37,6 +37,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "정렬", style: .plain, target: self, action: #selector(sortedAlertAction))
         }
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "백업/복구", style: .plain, target: self, action: #selector(backupButtonClicked))
 
         shopTextField.delegate = self
         
@@ -51,6 +52,11 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         
         searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
         
+    }
+    
+    @objc func backupButtonClicked() {
+        guard let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "BackupViewController") as? BackupViewController else {return}
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func sortedMenuAction() -> UIMenu {
