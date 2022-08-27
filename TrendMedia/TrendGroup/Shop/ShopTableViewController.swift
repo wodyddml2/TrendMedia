@@ -15,8 +15,8 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
+    let repository = UserShoppingRepository()
 
-    private let localRealm = try! Realm()
 
     private var taskList: Results<UserShopping>? {
         didSet {
@@ -24,7 +24,6 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    private var task: UserShopping?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +47,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         
         searchBackgroundStyle()
         
-        taskList = localRealm.objects(UserShopping.self)
+        taskList = repository.fetch()
         
         searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
     }
@@ -61,14 +60,17 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     
     private func sortedMenuAction() -> UIMenu {
         let favorite = UIAction(title: "즐겨찾기순", image: UIImage(systemName: "star")) { _ in
-            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "favorite", ascending: false)
+            
+            self.taskList = self.repository.fetchSort(sort: "favorite", ascending: false)
+
         }
         let check = UIAction(title: "미체크순", image: UIImage(systemName: "checkmark.square")) { _ in
-            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "check", ascending: true)
+            
+            self.taskList = self.repository.fetchSort(sort: "check", ascending: true)
         }
         
         let title = UIAction(title: "제목순", image: UIImage(systemName: "character")) { _ in
-            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "detail", ascending: true)
+            self.taskList = self.repository.fetchSort(sort: "detail", ascending: true)
         }
         
         let menu = UIMenu(title: "리스트 정렬", identifier: nil, options: .displayInline, children: [title, favorite, check])
@@ -80,13 +82,14 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         let alert = UIAlertController(title: "리스트 정렬", message: nil, preferredStyle: .actionSheet)
         
         let favorite = UIAlertAction(title: "즐겨찾기순", style: .default) { _ in
-            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "favorite", ascending: false)
+            self.taskList = self.repository.fetchSort(sort: "favorite", ascending: false)
         }
         let check = UIAlertAction(title: "미체크순", style: .default) { _ in
-            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "check", ascending: true)
+            self.taskList = self.repository.fetchSort(sort: "check", ascending: true)
+            
         }
         let title = UIAlertAction(title: "제목순", style: .default) { _ in
-            self.taskList = self.localRealm.objects(UserShopping.self).sorted(byKeyPath: "detail", ascending: true)
+            self.taskList = self.repository.fetchSort(sort: "detail", ascending: true)
         }
         [favorite, check, title].forEach {
             alert.addAction($0)
@@ -95,12 +98,8 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     @objc func searchButtonClicked() {
-        task = UserShopping(detail: shopTextField.text ?? "")
-        try! localRealm.write{
-            
-            localRealm.add(task!)
-            taskList = localRealm.objects(UserShopping.self)
-        }
+        let task = UserShopping(detail: shopTextField.text ?? "")
+        repository.addRealm(item: task, list: &(taskList)!)
         shopTextField.text = ""
     }
     
@@ -125,11 +124,8 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         shopTextField.resignFirstResponder()
 
-        task = UserShopping(detail: shopTextField.text ?? "")
-        try! localRealm.write{
-            localRealm.add(task!)
-            taskList = localRealm.objects(UserShopping.self)
-        }
+        let task = UserShopping(detail: shopTextField.text ?? "")
+        repository.addRealm(item: task, list: &(taskList)!)
 
         shopTextField.text = ""
         return true
@@ -180,18 +176,12 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     
     @objc func checkButtonClicked(_ sender: UIButton) {
         let task = taskList?[sender.tag]
-        try! localRealm.write {
-            task?.check = !task!.check
-        }
-        taskList = localRealm.objects(UserShopping.self)
+        repository.updateCheck(item: task!, list: &taskList!)
     }
     
     @objc func favoriteButtonClicked(_ sender: UIButton) {
         let task = taskList?[sender.tag]
-        try! localRealm.write {
-            task?.favorite = !task!.favorite
-        }
-        taskList = localRealm.objects(UserShopping.self)
+        repository.updateFavorite(item: task!, list: &taskList!)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -219,12 +209,7 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
             guard let tasks = taskList else {
                 return
             }
-            removeImageFromDocument(fileName: "\(tasks[indexPath.row].objectID).jpg")
-            try! localRealm.write {
-//                localRealm.deleteAll()
-                localRealm.delete((tasks[indexPath.row]))
-                taskList = localRealm.objects(UserShopping.self)
-            }
+            repository.deleteRealm(item: tasks[indexPath.row], list: &taskList!)
            
         }
     }

@@ -52,17 +52,7 @@ extension UIViewController {
         return image
     }
     
-    func removeImageFromDocument(fileName: String) {
-        guard let path = imageDirectoryPath() else {return}
-        let fileURL = path.appendingPathComponent(fileName)
-        
-        do {
-            try FileManager.default.removeItem(at: fileURL)
-        } catch let error {
-            print(error)
-        }
-    }
-    
+
     func fetchDocumentZipFile(completionHandler: @escaping ([String],[Any?]) -> ()) {
         do {
             guard let path = documentDirectoryPath() else {return}
@@ -78,6 +68,7 @@ extension UIViewController {
                 
             }
             let fileSize = zip.map {
+                
                 try? FileManager.default.attributesOfItem(atPath: $0.path)[.size]
             }
 
