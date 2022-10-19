@@ -16,18 +16,18 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var searchButton: UIButton!
     
     let repository = UserShoppingRepository()
+    
+    var dataSouce: UITableViewDiffableDataSource<Int, UserShopping>?
 
-
-    private var taskList: Results<UserShopping>? {
+    private var taskList: Results<UserShopping>! {
         didSet {
-            tableView.reloadData()
+            list = Array(taskList)
         }
     }
-    
-    
+    lazy var list = Array(taskList)
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         navigationController?.navigationBar.tintColor = .black
         navigationItem.title = "ShoppingList"
         if #available(iOS 14.0, *) {
@@ -49,7 +49,9 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         
         taskList = repository.fetch()
         
+        
         searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
+        configureDataSource()
     }
     
     @objc func backupButtonClicked() {
@@ -100,7 +102,9 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     @objc func searchButtonClicked() {
         let task = UserShopping(detail: shopTextField.text ?? "")
         repository.addRealm(item: task, list: &(taskList)!)
+        snapshotAdd()
         shopTextField.text = ""
+
     }
     
     // UIView 스타일
@@ -126,9 +130,20 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
 
         let task = UserShopping(detail: shopTextField.text ?? "")
         repository.addRealm(item: task, list: &(taskList)!)
+        
+        snapshotAdd()
 
         shopTextField.text = ""
+   
         return true
+    }
+    func snapshotAdd() {
+        guard let dataSouce = dataSouce else {return}
+        var snapshot = dataSouce.snapshot()
+        snapshot.deleteAllItems()
+        snapshot.appendSections([0])
+        snapshot.appendItems(list)
+        dataSouce.apply(snapshot)
     }
     
     // cell의 Height
@@ -137,52 +152,44 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
-    // cell의 갯수
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList?.count ?? 0
-    }
-    
-    // cell 스타일
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell", for: indexPath) as? ShopTableViewCell
-       
-        cell?.cellStyle()
-        
-        cell?.checkBoxButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
-        cell?.favoriteButton.addTarget(self, action: #selector(favoriteButtonClicked), for: .touchUpInside)
-        
-        if taskList?[indexPath.row].check == true {
-            cell?.checkBoxButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
-        } else {
-            cell?.checkBoxButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-        }
-        
-        if taskList?[indexPath.row].favorite == true {
-            cell?.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        } else {
-            cell?.favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
-        }
-        
-        cell?.shopListLabel.text = taskList?[indexPath.row].detail
-        
-        cell?.shoplistImageView.image = UIImage(systemName: "star")
-        
-        cell?.checkBoxButton.tag = indexPath.row
-        cell?.favoriteButton.tag = indexPath.row
-        
-        return cell ?? tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell")!
-    }
+//    // cell의 갯수
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return taskList?.count ?? 0
+//    }
+//
+//    // cell 스타일
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell", for: indexPath) as? ShopTableViewCell
+//
+//        cell?.cellStyle()
+//
+//        cell?.checkBoxButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+//        cell?.favoriteButton.addTarget(self, action: #selector(favoriteButtonClicked), for: .touchUpInside)
+//
+//        if taskList?[indexPath.row].check == true {
+//            cell?.checkBoxButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+//        } else {
+//            cell?.checkBoxButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+//        }
+//
+//        if taskList?[indexPath.row].favorite == true {
+//            cell?.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+//        } else {
+//            cell?.favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+//        }
+//
+//        cell?.shopListLabel.text = taskList?[indexPath.row].detail
+//
+//        cell?.shoplistImageView.image = UIImage(systemName: "star")
+//
+//        cell?.checkBoxButton.tag = indexPath.row
+//        cell?.favoriteButton.tag = indexPath.row
+//
+//        return cell ?? tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell")!
+//    }
 
     
-    @objc func checkButtonClicked(_ sender: UIButton) {
-        let task = taskList?[sender.tag]
-        repository.updateCheck(item: task!, list: &taskList!)
-    }
-    
-    @objc func favoriteButtonClicked(_ sender: UIButton) {
-        let task = taskList?[sender.tag]
-        repository.updateFavorite(item: task!, list: &taskList!)
-    }
+   
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
@@ -206,15 +213,67 @@ class ShopTableViewController: UITableViewController, UITextFieldDelegate {
     // 리스트 삭제
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let tasks = taskList else {
-                return
-            }
+            guard let tasks = taskList else { return }
             repository.deleteRealm(item: tasks[indexPath.row], list: &taskList!)
-           
         }
     }
     // header의 높이를 주어서 위의 텍스트 필드와의 간격
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+}
+
+extension ShopTableViewController {
+    
+    private func configureDataSource() {
+       
+        dataSouce = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, itemIdentifier in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell", for: indexPath) as! ShopTableViewCell
+            cell.cellStyle()
+            
+            cell.checkBoxButton.addTarget(self, action: #selector(self.checkButtonClicked), for: .touchUpInside)
+            cell.favoriteButton.addTarget(self, action: #selector(self.favoriteButtonClicked), for: .touchUpInside)
+            
+            if itemIdentifier.check == true {
+                cell.checkBoxButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+            } else {
+                cell.checkBoxButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            }
+            
+            if itemIdentifier.favorite == true {
+                cell.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            } else {
+                cell.favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+            }
+            
+            cell.shopListLabel.text = itemIdentifier.detail
+            
+            cell.shoplistImageView.image = UIImage(systemName: "star")
+            
+            cell.checkBoxButton.tag = indexPath.row
+            cell.favoriteButton.tag = indexPath.row
+            
+            return cell
+        })
+        
+        tableView.dataSource = dataSouce
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Int, UserShopping>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(list)
+        
+        dataSouce?.apply(snapshot)
+    }
+    
+    @objc func checkButtonClicked(_ sender: UIButton) {
+        let task = taskList?[sender.tag]
+        repository.updateCheck(item: task!, list: &taskList!)
+        snapshotAdd()
+    }
+    
+    @objc func favoriteButtonClicked(_ sender: UIButton) {
+        let task = taskList?[sender.tag]
+        repository.updateFavorite(item: task!, list: &taskList!)
+        snapshotAdd()
     }
 }
